@@ -51,6 +51,17 @@ CREATE TABLE IF NOT EXISTS books(
   PRIMARY KEY (`book_id`)
 );
 
+CREATE TABLE IF NOT EXISTS `movies` ( 
+  `movie_id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(40) NOT NULL,
+  `year` DATE NOT NULL,
+  `language` VARCHAR(30) NOT NULL,
+  `length`  INT NOT NULL,
+  `age_limit` VARCHAR(30) NOT NULL,
+  `subtitle` VARCHAR(100) NULL,
+  `price` INT NOT NULL,
+  PRIMARY KEY (`movie_id`));
+
 CREATE TABLE IF NOT EXISTS product(
   product_type varchar(10) not null,
   product_id int not null,
@@ -58,7 +69,8 @@ CREATE TABLE IF NOT EXISTS product(
   PRIMARY KEY (product_type, product_id),  
   CONSTRAINT type_con check( product_type in ('app', 'book','movie','device')),
   CONSTRAINT fk_apps FOREIGN KEY (product_id) REFERENCES apps(app_id) on update cascade,
-  CONSTRAINT fk_books FOREIGN KEY (product_id) REFERENCES books(book_id) on update cascade
+  CONSTRAINT fk_books FOREIGN KEY (product_id) REFERENCES books(book_id) on update cascade,
+  CONSTRAINT fk_movies FOREIGN KEY (product_id) REFERENCES movies(movie_id) on update cascade
 );
 
                            
@@ -75,3 +87,11 @@ INSERT INTO books (book_id, ISBN, title, author, price, page, genre, language, p
   (4, 9791164130801, 'Bad Blood', 'John Carreyrou', 10080, 468, 'Business & Economics / General', 'korean', 'Wiseberry', 190415);
 
 INSERT INTO apps (`app_id`, `app_name`, `description`, `developer_id`, `url`, `price`, `downloaded_num`, `uploaded_date`, `latest_update`, `score`, `rating`, `current_version`, `whats_new`, `required_software`, `size`, `editors_choice`, `coming_soon`, `weekly_recommended`) VALUES ('2', 'Facebook', 'Keeping up with friends is faster and easier than ever. Share updates and photos, engage with friends and Pages, and stay connected to communities important to you. ', '2', 'https://play.google.com/store/apps/details?id=com.facebook.katana', 'FREE', '1,000,000,000+', '2010-01-01', '2019-05-14', '4.1 total 87,090,209 ', 'Rated for 12+ Parental Guidance Recommended', 'Varies with device', ' Improvements for reliability and speed', 'Varies with device', 'Varies with device', '0', '0', '0');
+*/
+INSERT INTO `movies`(`movie_id`, `title`, `year`, `language`, `length`, `age_limit`, `subtitle`, `price`) VALUES 
+(1, 'How to train your dragon3', '2019.01.11', 'korean', 104, 0, NULL, 6500) ,
+(2, 'wonder', '2017.11.21', 'English', 113, 0, 'korean', 5000),
+(3, 'Spiderman: homecoming', '2017.07.23', 'English', 133, 12, 'Korean', 3500),
+(4, 'The dark knight', '2009.02.02', 'English', 152, 15, 'Korean', 4500);
+COMMIT;
+
