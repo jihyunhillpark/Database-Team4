@@ -45,12 +45,8 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`movie_id`, `title`, `year`, `language`, `length`, `age-limit`, `subtitle`, `price`) VALUES
 (1, 'How to train your dragon3', '201901', 'korean', 104, NULL, NULL, 6500),
-(1, 'How to train your dragon3', '201901', 'korean', 104, NULL, NULL, 6500),
-(2, 'wonder', '201711', 'English', 113, NULL, 'korean', 5000),
 (2, 'wonder', '201711', 'English', 113, NULL, 'korean', 5000),
 (3, 'Spiderman: homecoming', '201707', 'English', 133, 12, 'Korean', 3500),
-(3, 'Spiderman: homecoming', '201707', 'English', 133, 12, 'Korean', 3500),
-(4, 'The dark knight', '200902', 'English', 152, 15, 'Korean', 4500),
 (4, 'The dark knight', '200902', 'English', 152, 15, 'Korean', 4500);
 COMMIT;
 
