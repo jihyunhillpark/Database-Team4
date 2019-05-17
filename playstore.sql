@@ -73,7 +73,20 @@ CREATE TABLE IF NOT EXISTS product(
   CONSTRAINT fk_movies FOREIGN KEY (product_id) REFERENCES movies(movie_id) on update cascade
 );
 
-                           
+CREATE TABLE IF NOT EXISTS wishList(
+   	user varchar(30) NOT NULL,
+    product_type varchar(10) not null,
+	product_id int not null,
+    create_date date,
+
+	PRIMARY KEY (user,product_type, product_id), 
+    
+	CONSTRAINT fk_user FOREIGN KEY (user) 
+REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE,
+
+ 	CONSTRAINT fk_stored_product FOREIGN KEY (product_type, product_id) 
+REFERENCES product(product_type, product_id) ON DELETE CASCADE ON UPDATE CASCADE
+);                           
 INSERT INTO user (email,password,name,birthday,nationality)VALUES('21600301@handong.edu','qkrwlgus', 'jihyunpark','1995.05.06','SouthKorea'),
 ('21500771@handong.edu','gkalswl', 'minjiha','1996.05.07','SouthKorea'),
 ('21300333@handong.edu','qkrgusdn', 'hyunwoopark','1994.03.01','USA'),
